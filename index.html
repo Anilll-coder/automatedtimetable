@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Study Planner - AI Timetable Creator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">📚</div>
+            <h1>Study Planner - AI Timetable Creator</h1>
+            <p>Optimize your study schedules with AI-powered assistance</p>
+        </header>
+
+        <nav class="tab-container">
+            <button class="tab active" onclick="showTab('create')">Create Timetable</button>
+            <button class="tab" onclick="showTab('reschedule')">Reschedule Sessions</button>
+            <button class="tab" onclick="showTab('about')">About</button>
+        </nav>
+
+        <main>
+            <section id="create-tab" class="tab-content active">
+                <div class="input-container step">
+                    <h2>Enter Number of Subjects</h2>
+                    <div class="input-group">
+                        <label for="numSubjects">Number of Subjects (1-10):</label>
+                        <input type="number" id="numSubjects" min="1" max="10" placeholder="Enter number of subjects">
+                    </div>
+                    <button onclick="generateSubjects()">Next</button>
+                </div>
+
+                <div id="subjects-container" class="step hidden">
+                    <h1>SUBJECTS</h1>
+                    <div id="subjectInputs"></div>
+                    <button onclick="generateSchedule()">Generate Timetable</button>
+                </div>
+
+                <div class="step">
+                    <h2>Generated Schedule</h2>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Day</th>
+                                <th>Period 1</th>
+                                <th>Period 2</th>
+                                <th>Period 3</th>
+                                <th>Period 4</th>
+                                <th>Period 5</th>
+                                <th>Period 6</th>
+                            </tr>
+                        </thead>
+                        <tbody id="schedule-body"></tbody>
+                    </table>
+                </div>
+            </section>
+
+            <section id="reschedule-tab" class="tab-content hidden">
+                <div class="reschedule-container step">
+                    <h2>Reschedule Study Sessions</h2>
+                    <div class="input-group">
+                        <label for="absentDay">Day to Reschedule:</label>
+                        <input type="text" id="absentDay" placeholder="E.g., Monday">
+                    </div>
+                    <div class="input-group">
+                        <label for="absentSubject">Subject to Reschedule:</label>
+                        <input type="text" id="absentSubject" placeholder="E.g., Mathematics">
+                    </div>
+                    <div class="controls">
+                        <button onclick="reschedule()">Reschedule</button>
+                        <button class="secondary" onclick="resetSchedule()">Reset</button>
+                    </div>
+                </div>
+            </section>
+
+            <section id="about-tab" class="tab-content hidden">
+                <div class="step">
+                    <h2>About Study Planner</h2>
+                    <p>The AI Timetable Creator helps students efficiently manage their study schedules using intelligent scheduling algorithms.</p>
+                </div>
+            </section>
+        </main>
+
+        <div id="toast" class="toast"></div>
+
+        <footer>
+            <p>&copy; 2025 Study Planner - AI Timetable Creator</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
